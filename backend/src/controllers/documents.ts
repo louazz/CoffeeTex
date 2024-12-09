@@ -12,8 +12,6 @@ export const create = async({request, response}: {request:any; response:any})=>{
         title,
         content
     })
-    let cmd0 = new Deno.Command("mkdir", { args: ["uploads"] });
-    let { stdout0, stderr0 } = await cmd0.output();
 
    let cmd = new Deno.Command("mkdir", { args: ["./src/uploads/"+_id] });
    let { stdout, stderr } = await cmd.output();
