@@ -1,0 +1,17 @@
+version: '3'
+
+services: 
+  mongo:
+    image: mongo 
+    ports: 
+      - "27017:27017"
+  server:
+    image: encrylatexdeno
+    ports: 
+      - "8000:8000"
+    depends_on:
+      - mongo
+  client:
+    image: coffeetex
+    ports:
+      - "3000:3000"

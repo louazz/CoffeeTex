@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "dev": "deno run -A app.ts --unstable",
+    "nodeModulesDir": "auto"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1",
+    "nodeModulesDir": "auto"
+  }
+}

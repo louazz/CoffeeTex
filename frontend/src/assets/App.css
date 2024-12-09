@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+
+body{
+  font-family: "Kode Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+ background-color: #00204a;
+  color: #fdb44b;
+}
+.c{
+  position: relative;
+  text-align: center;
+  color:  #fdb44b;
+}
+.top-left {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.button-dark {
+  background-color:#fdb44b;
+  border: #fdb44b;
+}
+
+input:invalid {
+  background-color: #dfe9e7;
+}
+
+input:valid {
+  background-color: #dfe9e7;
+}
+textarea:valid{
+  background-color: #dfe9e7;
+}
+.markdown{
+  table {
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: 6px 13px;
+    border: 1px solid black;
+  }
+
+  p {
+    line-height: 1.5;
+  }
+}
+table,
+td {
+    border: 1px solid #081b46;
+}
+
+thead,
+tfoot {
+    background-color: #081b46;
+    color: #dfe9e7;
+}
+.box {
+  display: flex;
+}
+
+.one {
+  flex: 1 1 auto;
+}
+
+.two {
+  flex: 1 1 auto;
+}
+
+
+.three {
+  flex: 1 1 auto;
+}
+
+.button-black {
+  background-color: #fdb44b;
+  border-color: #fdb44b;
+}
+
+.button-black.button-clear,
+.button-black.button-outline {
+  background-color: transparent;
+  color: #fdb44b;
+}
+
+.button-black.button-clear {
+  border-color: transparent;
+}
+a{
+  color: #fdb44b;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fdb44b
+}
+div.horizontalgap {
+  padding: 5px;
+}
+@media (max-width: 767px) {                  
+  .content-to-hide {
+     display: none;
+  }
+}
+
+.yellow{
+  font-size: 20px;
+  color: #1d51c9
+  }
+
+.img1{
+  opacity: 0.70;
+  width: 100%;
+  object-fit: cover; 
+  height: auto;
+  min-height: 600px;
+  
+}
+table,
+td {
+    border: 1px solid #081b46;
+}
+
+thead,
+tfoot {
+    background-color: #081b46;
+    color: #fff;
+}
+
+.textarea {
+  height: 500px;
+}
+.color1 {color: #081b46;}
+.color2 {color: #207bd8;}
+.color3 {color: #20a7d8;}
+.color4 {background-color: #fdb44b;}
+.color5 {background-color: #e3efed;}
+.hide{
+  display:none
+}
+.first-color { 
+	background: #00204a; 
+}
+	
+.second-color { 
+	background-color: #005792; 
+}
+
+.third-color { 
+	background: #00bbf0; 
+}
+
+.fourth-color { 
+	background: #fdb44b; 
+}
+.c{ 
+  width: 100%;
+  min-width: 0px;
+ max-width: 1000px;
+ min-height: 200px;
+ max-height: 1000px;
+   background-color: #00204a; margin: 0 auto; }
