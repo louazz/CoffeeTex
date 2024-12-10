@@ -34,8 +34,6 @@ From the root of the project run the following command:
 docker-compose up
 ```
 
-- Now you need to navigate to the correct IP address and the application will start.
-
 To know the IP address of the docker container, run the following commands:
 
 ```
