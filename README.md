@@ -49,7 +49,7 @@ d3f69caf91b3   encrylatexdeno   "/tini -- docker-ent…"   56 seconds ago   Up 5
 f5b1c015f20b   mongo            "docker-entrypoint.s…"   56 seconds ago   Up 56 seconds   0.0.0.0:27017->27017/tcp, :::27017->27017/tcp   thecoffeetexeditor_mongo_1
 ```
 
-- Copy the container id of the "coffeetex" image and run the following command:
+- Copy the container id of the "coffeetex" image and run:
 
 ```
 docker inspect YOUR_CONTAINERID | grep "IPAddress"
@@ -57,7 +57,7 @@ docker inspect YOUR_CONTAINERID | grep "IPAddress"
 
 - The docker container have an IP address in the range of 172.19.0.0/16.
 
-- Navigate to docker_ip_address:3000 and the application will starts
+- Navigate to docker_ip_address:3000 and the application will start
 
 #### The image below shows the "browse" screen of the web application
 ![alt text](./browse.png)
