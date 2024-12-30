@@ -23,7 +23,7 @@ function Sample({file}) {
   const [containerRef, setContainerRef] = useState(null);
   const [containerWidth, setContainerWidth] = useState();
   const [page, setPage] = useState(1);
-  const [scale, setScale]= useState(1)
+  const [scale, setScale]= useState(1.1)
   const onResize = useCallback((entries) => {
     const [entry] = entries;
 

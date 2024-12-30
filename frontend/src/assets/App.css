@@ -5,13 +5,15 @@ body{
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
- background-color: #00204a;
-  color: #fdb44b;
+ background-color: #b8e3e9;
+  color: #ff5c00;
+  transform: scale(0.97);
+  transform-origin: 0 0;
 }
 .c{
   position: relative;
   text-align: center;
-  color:  #fdb44b;
+  color:  #ff5c00;
 }
 .top-left {
   position: absolute;
@@ -20,8 +22,8 @@ body{
   transform: translate(-50%, -50%);
 }
 .button-dark {
-  background-color:#fdb44b;
-  border: #fdb44b;
+  background-color:#ff5c00;
+  border: #ff5c00;
 }
 
 input:invalid {
@@ -42,7 +44,7 @@ textarea:valid{
   th,
   td {
     padding: 6px 13px;
-    border: 1px solid black;
+    border: 1px solid ff5c00;
   }
 
   p {
@@ -51,12 +53,12 @@ textarea:valid{
 }
 table,
 td {
-    border: 1px solid #081b46;
+    border: 1px solid #ff5c00;
 }
 
 thead,
 tfoot {
-    background-color: #081b46;
+    background-color: #ff5c00;
     color: #dfe9e7;
 }
 .box {
@@ -77,21 +79,21 @@ tfoot {
 }
 
 .button-black {
-  background-color: #fdb44b;
-  border-color: #fdb44b;
+  background-color: #ff5c00;
+  border-color: #ff5c00;
 }
 
 .button-black.button-clear,
 .button-black.button-outline {
   background-color: transparent;
-  color: #fdb44b;
+  color: #ff5c00;
 }
 
 .button-black.button-clear {
   border-color: transparent;
 }
 a{
-  color: #fdb44b;
+  color: #ff5c00;
 }
 
 .centered {
@@ -99,7 +101,7 @@ a{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #fdb44b
+  color: #ff5c00
 }
 div.horizontalgap {
   padding: 5px;
@@ -116,21 +118,23 @@ div.horizontalgap {
   }
 
 .img1{
-  opacity: 0.70;
-  width: 100%;
-  object-fit: cover; 
-  height: auto;
-  min-height: 600px;
-  
+  opacity: 0.80;
+  min-height: 400px;
+  max-width: 100%; 
+display: block; 
+height: auto;
+height: auto;
+width: 100%;
 }
+
 table,
 td {
-    border: 1px solid #081b46;
+    border: 1px solid #4f7c82;
 }
 
 thead,
 tfoot {
-    background-color: #081b46;
+    background-color: #4f7c82;
     color: #fff;
 }
 
@@ -150,7 +154,7 @@ tfoot {
 }
 	
 .second-color { 
-	background-color: #005792; 
+	background-color: #b8e3e9; 
 }
 
 .third-color { 
@@ -166,4 +170,9 @@ tfoot {
  max-width: 1000px;
  min-height: 200px;
  max-height: 1000px;
-   background-color: #00204a; margin: 0 auto; }
+   background-color: #b8e3e9; margin: 0 auto; }
+@media only screen and (max-width: 400px) {
+    .c {
+      display: none;
+    }
+  }

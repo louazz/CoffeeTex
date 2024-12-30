@@ -11,11 +11,12 @@ import "ace-builds/src-noconflict/ext-language_tools";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import FileSaver from "file-saver";
+import useWindowDimensions from "../components/windowDimensions.jsx";
 
 const Editor =()=>{
  const [numPages, setNumPages] = useState();
  const [pageNumber, setPageNumber] = useState(1);
- const [file, setFile] = useState();
+ const [file, setFile] = useState([]);
  const [fileUrl, setFileUrl] = useState(null);
  const [content, setContent] = useState();
  const [checker, setChecker] = useState(false);
@@ -24,7 +25,9 @@ const Editor =()=>{
  const navigate = useNavigate()
  const api = "http://localhost:8000";
  let { id } = useParams();
- 
+ const[height, setHeight]= useState("1000px")
+ const { h, w } = useWindowDimensions();
+
  useEffect(() => {
      if (localStorage.getItem("token") == undefined) {
          navigate("/login")
@@ -47,16 +50,17 @@ const Editor =()=>{
                              "Content-Type": "multipart/form-data",
                          },
                      }).then(res => {
-                         var file = new Blob([res.data])
-                         var fileUrl = URL.createObjectURL(file);
-                         setFileUrl(fileUrl)
+                        var file = new Blob([res.data], {type: 'application/pdf'})
+                        var fileUrl = URL.createObjectURL(file);
+                        setFileUrl(fileUrl)
+                        console.log(fileUrl)
                          setSeed(Math.random())
                          setChecker(true);
 
                      })
                  } else { localStorage.clear(); alert("server error") }
              })
-
+             setHeight(""+h+"px")
          }
      }
  })
@@ -64,22 +68,32 @@ const Editor =()=>{
      setContent(newValue)
      console.log(content)
  }
- const handleUpload = (e) => {
-     
-    const len = e.target.files.length;
-
-    for(let i=0; i < len; i ++){
-        setFile(e.target.files[0]);
-        console.log(file)
-    }
+ const handleUpload =  async (e) => {
+   
+    
      
      const formData = new FormData();
-     formData.append('key', file);
-     axios
+     formData.append('key', e.target.files[0]);
+     /*fetch(api + "/api/document/upload/" + id, {
+        mode: 'cors',
+        method: 'POST',
+    
+        body: formData
+      }).then(
+        success =>   alert("file uploaded") // Handle the success response object
+      ).catch(
+        error =>   alert(error) // Handle the error response object
+      );
+    };*/
+ if (file){
+
+
+      axios
          .post(
              api + "/api/document/upload/" + id,
              formData,
              {
+                withCredentials: false,
                  responseType: "arraybuffer",
                  headers: {
                      "Content-Type": "multipart/form-data",
@@ -95,7 +109,7 @@ const Editor =()=>{
          .catch(function () {
              alert("check your file")
          })
- }
+ } }
  const Compile = () => {
      axios.patch(
          api + "/api/document/" + id,
@@ -155,19 +169,20 @@ const Editor =()=>{
    setNumPages(numPages);}
     return (
         <>
+        <div className="container">
+        <Nav/>
+        </div>
         <div className="row" >
         <div className="column">
             
-            <div className="c ">
-            <Nav/>
+        <div className="container">          
             
             <br/>
             <div className="second-color">
                 <br/>
                 <div className="box " >
                  
-                    <br/>
-                    <br/>
+    
                     <div className="one">
                         <button className="button button-black float-black" onClick={Compile} >Run</button>
                         </div>
@@ -183,19 +198,18 @@ const Editor =()=>{
                         <input className="hide" id="files" type="file"  onChange={handleUpload} />
                         </div>
                         <div className="one">
-                        <button className="button button-black button-outline " onClick={Docx} >docx</button>
+                        <button className="button button-black " onClick={Docx} >docx</button>
                     </div>
                 </div>
                 </div>
                
           <div className="second-color">
-          <br />
                 <AceEditor
                             mode="latex"
                             onChange={onChange}
                             name="UNIQUE_ID_OF_DIV"
                             editorProps={{ $blockScrolling: true }}
-                            height="1100px"
+                            height={height}
                             width="100%"
                             value={content}
                             enableBasicAutocompletion={true}
@@ -203,7 +217,9 @@ const Editor =()=>{
                             enableSnippets={true}
                             UseWrapMode= {true}
                             setOptions={{
-                                wrap: true
+                                wrap: true,
+                               maxLines: 90
+                            
                             }}
                             
                         />
@@ -214,9 +230,7 @@ const Editor =()=>{
                     <div className="container">
                     <p>
                     </p>
-                    <br/>
-                    <br/>
-                    <br/>
+                 
                  <Sample file ={fileUrl} key={seed}/>
                 </div>
                 </div>

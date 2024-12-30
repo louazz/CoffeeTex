@@ -3,6 +3,9 @@ import { LoremIpsum } from "lorem-ipsum";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import Image from "../assets/login_im.png"
+import { FiCoffee } from "react-icons/fi";
+
 function Login() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -62,20 +65,49 @@ function Login() {
                     <Nav />
                     <br/>
                     <br/>
-                    <div className="second-color">
+                    <div >
                         <center>
+                          <h1>Welcome to CoffeeTex <FiCoffee /> </h1>
+                          <h6>You can start writing in LaTex and generating PDF documents, Word, and Markdown files</h6>
+                        </center>
+                    </div>
+                    <br/>
+                    <div className='c'>
+                      <img className='img1'  src={Image}/>
+                    </div>
+                    <br/>
+                    <div className="second-color">
                         <br/>
                <h4>Enter your user credentials</h4>
                <p> This application allows the user to create, edit, and export LaTex documents.</p>
-               <br/>
-               <br/>
-               <label>Enter your username</label>
-               <input  placeholder="Username" onChange={handleUsername}/>
-               <label>Enter your password</label>
-               <input placeholder="password" type='password' onChange={handlePassword}/>
+    
+               <div className='row'>
+                <div className='column'>
+                <label>Enter your username</label>
+                <input  placeholder="Username" onChange={handleUsername}/>
+                </div>
+                <div className='column'>
+                <label>Enter your password</label>
+                <input placeholder="password" type='password' onChange={handlePassword}/>
+                </div>
+               </div>
                <button className="button button-black" onClick={submit}>Login</button>
                <br/>
-               </center>
+               </div>
+               <br/>
+               <br/>
+               <div className='row'>
+                <div className='column'>
+                <p>This web application is made by<br/> Louai Zaiter in 2024<br/> All right are reserved <br/> Instagram: @CoffeeTex <FiCoffee/></p>
+
+                </div>
+                <div className='column'>
+                    <p>This application is suitable for desktop computers and laptops. </p>
+                </div>
+                <div className='column'>
+                 <p>Address:<br/>
+                 Penglais Road,<br/> Aberystwyth,<br/> United Kingdom,<br/> SY23 3LH</p>
+                </div>
                </div>
                 </div>
     

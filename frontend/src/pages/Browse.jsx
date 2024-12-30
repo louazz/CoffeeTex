@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import Nav from '../components/Nav.jsx';
+import { FiCoffee } from "react-icons/fi";
+
 function Browse() {
     const [data, setData] = useState([
     ])
@@ -132,21 +134,71 @@ function Browse() {
             }).then(res => { if (res.status == 200 || res.status==201) { navigate("/document/" + res.data['id']) } else { alert("an error has occured") } })
         }
     }
+    const handleUpload = async (e) => {
+
+        const id = localStorage.getItem("userId");
+        console.log(e.target.files)
+         
+         const formData = new FormData();
+         formData.append('key', e.target.files[0]);
+         await axios
+             .post(
+                 api + "/api/document/zip/"+ localStorage.getItem("userId"),
+                 formData,
+                 {
+                     responseType: "arraybuffer",
+                     headers: {
+                         "Content-Type": "multipart/form-data",
+                     },
+                 }
+             )
+             .then((response) => {
+                 if (response.status == 200 || response.status == 201) {
+                    console.log(response.data["document"])
+                     alert("file uploaded")
+                     axios.get(api + "/api/document/user/"+localStorage.getItem("userId"), {
+                        headers: {
+                            'Authorization': `Token ${localStorage.getItem("token")}`
+                        }
+                    }).then(
+                        response => {
+                            if (response.status == 200 || response.status == 201) {
+                                console.log(response.data.documents)
+                                setRes(response.data.documents)
+                                setData(response.data.documents)
+                                setChecker(true)
+                            } else {
+                                localStorage.clear()
+                                alert("Please make sure that the file is valid and does not contain any space")
+                            }
+                        }
+                    )
+                 }
+    
+             })
+             .catch(function () {
+                 alert("check your file")
+             })
+     }
 
     return (<>
     <div className="container">
                     <Nav />
                     <br/>
                     <br/>
-            <blockquote>
-                <p><em>edit, view and create LaTex documents online </em></p>
-            </blockquote>
-        
+                    <div >
+                        <center>
+                          <h1>Welcome to CoffeeTex <FiCoffee /> </h1>
+                          <h6>You can start writing in LaTex and generating PDF documents, Word, and Markdown files</h6>
+                        </center>
+                    </div>
+                    <br/>        
             <br />
             </div>
             <br />
             <div className="container second-color">
-            <h2>documents</h2>
+            <h2>LaTex Documents</h2>
+            <p>If you are trying to upload a zip file, please make sure that the file name does not contain any space and that the primary LaTex file is called <strong>main.tex</strong></p>
             <center>
                 <div className="row"><div className="column column-60">
                     <input className="float-right" placeholder="Search for document..." onChange={handleChange} />
@@ -155,14 +207,18 @@ function Browse() {
                 <div className="box">
 
                     <div className ="one">
-                    <label for="files" class="button button-black  file-label">PDF Upload</label>
-                    <input className="hide" id="files" type="file"  onChange={generateText} />
+                
 
                     </div>
-
+                    <div className="one">
+                        <label for="files" class="button button-black float-right file-label">Upload ZIP</label>
+                    </div>
+                    <div className="one">
+                        <input className="hide" id="files" type="file"  onChange={handleUpload} />
+                        </div>
 
                     <div className="one">
-                    <button className="button  button-dark  float-left" onClick={handleNew}>New Document +</button></div>
+                    <button className="button  button-dark  float-left" onClick={handleNew}>New Document</button></div>
 
                     </div>
                 </div>
@@ -213,6 +269,22 @@ function Browse() {
                 </table>
             </center>
         <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div className='row'>
+                <div className='column'>
+                <p>This web application is made by<br/> Louai Zaiter in 2024<br/> All right are reserved <br/> Instagram: @CoffeeTex <FiCoffee/></p>
+
+                </div>
+                <div className='column'>
+                    <p>This application is suitable for desktop computers and laptops. </p>
+                </div>
+                <div className='column'>
+                 <p>Address:<br/>
+                 Penglais Road,<br/> Aberystwyth,<br/> United Kingdom,<br/> SY23 3LH</p>
+                </div>
+               </div>
         </div></>
     )
 }
