@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import Nav from '../components/Nav.jsx';
 import { FiCoffee } from "react-icons/fi";
+import Coffee from '../components/Coffee';
 
 function Browse() {
     const [data, setData] = useState([
@@ -14,7 +15,7 @@ function Browse() {
     const [txt, setText] = useState("")
     const [file, setFile] = useState([]);
     const [event, setEvent] = useState()
-    const api = "http://localhost:8000";
+    const api = "http://167.99.197.228:8000";
     useEffect(() => {
         if (localStorage.getItem("token") == undefined || localStorage.getItem("token") == null) {
             navigate("/login")
@@ -184,6 +185,8 @@ function Browse() {
     return (<>
     <div className="container">
                     <Nav />
+                
+                    <Coffee/>
                     <br/>
                     <br/>
                     <div >
@@ -198,7 +201,7 @@ function Browse() {
             <br />
             <div className="container second-color">
             <h2>LaTex Documents</h2>
-            <p>If you are trying to upload a zip file, please make sure that the file name does not contain any space and that the primary LaTex file is called <strong>main.tex</strong></p>
+            <p>If you are trying to upload a zip file, please make sure that the file name does not contain any space and that the primary LaTex file is called <strong>main.texs</strong></p>
             <center>
                 <div className="row"><div className="column column-60">
                     <input className="float-right" placeholder="Search for document..." onChange={handleChange} />

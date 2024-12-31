@@ -6,12 +6,12 @@ import { useEffect, useState } from "react";
 import Image from "../assets/login_im.png";
 import { useNavigate } from "react-router";
 import { FiCoffee } from "react-icons/fi";
-
+import Coffee from '../components/Coffee';
 function SignUp() {
     const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const api = "http://localhost:8000";
+  const api = "http://167.99.197.228:8000";
   const navigate = useNavigate();
   function submit() {
       console.log(username)
@@ -65,6 +65,8 @@ function SignUp() {
        
                 <div className="container">
                     <Nav />
+                
+                    <Coffee/>
                     <br/>
                     <br/>
                     <div >

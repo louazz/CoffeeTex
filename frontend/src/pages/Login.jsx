@@ -5,12 +5,13 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Image from "../assets/login_im.png"
 import { FiCoffee } from "react-icons/fi";
+import Coffee from '../components/Coffee';
 
 function Login() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
-    const api = "http://localhost:8000";
+    const api = "http://167.99.197.228:8000";
     const submit = () => {
         axios.post(api + "/api/signin", {
             username: username,
@@ -63,6 +64,8 @@ function Login() {
        
                 <div className="container">
                     <Nav />
+                    
+                    <Coffee/>
                     <br/>
                     <br/>
                     <div >

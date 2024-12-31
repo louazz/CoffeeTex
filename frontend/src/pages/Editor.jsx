@@ -23,10 +23,9 @@ const Editor =()=>{
  const [seed, setSeed] = useState(1)
  const [title, setTitle] = useState("")
  const navigate = useNavigate()
- const api = "http://localhost:8000";
+ const api = "http://167.99.197.228:8000";
  let { id } = useParams();
  const[height, setHeight]= useState("1000px")
- const { h, w } = useWindowDimensions();
 
  useEffect(() => {
      if (localStorage.getItem("token") == undefined) {
@@ -60,7 +59,6 @@ const Editor =()=>{
                      })
                  } else { localStorage.clear(); alert("server error") }
              })
-             setHeight(""+h+"px")
          }
      }
  })
@@ -110,8 +108,8 @@ const Editor =()=>{
              alert("check your file")
          })
  } }
- const Compile = () => {
-     axios.patch(
+ const Compile = async () => {
+     await axios.patch(
          api + "/api/document/" + id,
          {
              "title": title,
@@ -139,7 +137,9 @@ const Editor =()=>{
          } else {
              alert("internal server error")
          }
-     })
+     }).catch(function () {
+        alert("check your latex code")
+    })
  }
  const handleTitle = (e) => {
      setTitle(e.target.value)
@@ -207,9 +207,8 @@ const Editor =()=>{
                 <AceEditor
                             mode="latex"
                             onChange={onChange}
-                            name="UNIQUE_ID_OF_DIV"
                             editorProps={{ $blockScrolling: true }}
-                            height={height}
+                            height="1010px"
                             width="100%"
                             value={content}
                             enableBasicAutocompletion={true}
@@ -218,7 +217,6 @@ const Editor =()=>{
                             UseWrapMode= {true}
                             setOptions={{
                                 wrap: true,
-                               maxLines: 90
                             
                             }}
                             

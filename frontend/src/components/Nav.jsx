@@ -40,6 +40,9 @@ function Nav() {
                     <div className="one">
                         <a onClick={()=>{navigate('/search')}}>Browse</a>
                     </div>
+                    <div className="one">
+                        <a onClick={()=>{navigate('/support')}}>Support up</a>
+                    </div>
                 </div>
             </div>
 
