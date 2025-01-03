@@ -70,6 +70,47 @@ export const uploadZip = async (
 
 };
 
+export const getFiles = async (
+  { request, response, params }: {
+    request: any;
+    response: any;
+    params: { docId: string }
+  }
+  
+)=>{
+  const id = params.docId;
+  const list = new Deno.Command("ls", { args: ["./src/uploads/"+id] });
+  let { stdout, stderr } = await cmd.output();
+  const ls = new TextDecoder().decode(stdout)
+  
+  response.status=200;
+  response.body={list: ls}
+  
+
+}
+export const getLog = async (
+  { request, response, params }: {
+    request: any;
+    response: any;
+    params: { docId: string }
+  }
+  
+)=>{
+  const id = params.docId;
+  const decoder = new TextDecoder("utf-8");
+const data = await Deno.readFile('./src/uploads/'+id+"latex.log");
+if (data){
+  console.log(decoder.decode(data));
+  const log = decoder.decode(data);
+  response.status=200;
+  response.body={log: log}
+  
+}else{
+  response.status= 404
+}
+
+}
+
 export const compileFile= async (
   { request, response, params }: {
     request: any;
