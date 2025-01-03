@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.ef476b7b.css",
-    "main.js": "/static/js/main.c030bfc1.js",
+    "main.js": "/static/js/main.a7240f00.js",
     "static/js/453.d7718f60.chunk.js": "/static/js/453.d7718f60.chunk.js",
     "static/media/editor_2.png": "/static/media/editor_2.4d88137a22641db7edd1.png",
     "static/media/tuto.pdf": "/static/media/tuto.405a80a60ba0aa971271.pdf",
     "index.html": "/index.html",
     "main.ef476b7b.css.map": "/static/css/main.ef476b7b.css.map",
-    "main.c030bfc1.js.map": "/static/js/main.c030bfc1.js.map",
+    "main.a7240f00.js.map": "/static/js/main.a7240f00.js.map",
     "453.d7718f60.chunk.js.map": "/static/js/453.d7718f60.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ef476b7b.css",
-    "static/js/main.c030bfc1.js"
+    "static/js/main.a7240f00.js"
   ]
 }
