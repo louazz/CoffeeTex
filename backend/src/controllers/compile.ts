@@ -79,15 +79,51 @@ export const getFiles = async (
   
 )=>{
   const id = params.docId;
-  const list = new Deno.Command("ls", { args: ["./src/uploads/"+id] });
-  let { stdout, stderr } = await cmd.output();
-  const ls = new TextDecoder().decode(stdout)
-  
+  const p= Deno.run({ cmd: ["sh", "list.sh", "./src/uploads/"+id],  stdout: "piped",
+  stderr: "piped"});
+  const output = await p.output();
+  const outStr = new TextDecoder().decode(output);
+  p.close()
+  const fileNames = outStr.split(/\r?\n/)
+  console.log(fileNames)
+  fileNames.pop()
+
+  var files = []
+  const decoder = new TextDecoder("utf-8");
+
+  for (var name in fileNames){
+    var item ={}
+    
+    const data = await Deno.readFile('./src/uploads/'+id+"/"+ fileNames[name]);
+    const content = decoder.decode(data);
+    // Object.keys(item) = fileNames[name]
+    item[fileNames[name]] = content
+    files.push(item);
+  }
   response.status=200;
-  response.body={list: ls}
+  response.body={files}
   
 
 }
+
+export const saveFiles = async (  { request, response, params }: {
+  request: any;
+  response: any;
+  params: { docId: string }
+})=>{
+  const id = params.docId
+  const {files}= await request.body.json();
+  for (var i in files){
+    const filename = Object.keys(files[i])[0];
+    const content = files[i][filename];
+    const file = await Deno.create("./src/uploads/"+id+"/"+filename);
+    await Deno.writeTextFile("./src/uploads/"+id+"/"+filename, content);
+  }
+  console.log("file saved")
+  response.status=200;
+
+}
+
 export const getLog = async (
   { request, response, params }: {
     request: any;
@@ -98,7 +134,7 @@ export const getLog = async (
 )=>{
   const id = params.docId;
   const decoder = new TextDecoder("utf-8");
-const data = await Deno.readFile('./src/uploads/'+id+"latex.log");
+const data = await Deno.readFile('./src/uploads/'+id+"/latex.log");
 if (data){
   console.log(decoder.decode(data));
   const log = decoder.decode(data);
