@@ -5,6 +5,23 @@ import { ObjectId } from "https://deno.land/x/mongo/mod.ts";
 import { DocumentSchema } from "../schema/document.ts";
 
 const docs = db.collection<DocumentSchema>('documents');
+
+export const addFile = async (
+  { request, response, params }: {
+    request: any;
+    response: any;
+    params: { docId: string };
+  },
+) => {
+  const id= params.docId;
+  const {name}= await request.body.json();
+
+  await Deno.create("./src/uploads/"+id+"/"+name);
+
+  response.status = 200;
+};
+
+
 export const fileUpload = async (
   { request, response, params }: {
     request: any;
@@ -58,15 +75,11 @@ export const uploadDocx = async (
   
   process.close();
 
-  const decoder = new TextDecoder("utf-8");
-  const tmp = await Deno.readFile("./src/uploads/"+_id+"/latex.tex");
-  const content = decoder.decode(tmp);
 
 
-  const doc= await docs.updateOne({_id: new ObjectId(_id)},{  $set: { title:form.files["key"].filename, content}});
+  //const doc= await docs.updateOne({_id: new ObjectId(_id)},{  $set: { title:form.files["key"].filename, content}});
  console.log(id);
   response.status = 200;
-  response.body={document: doc}
 
 };
 
@@ -79,7 +92,6 @@ export const uploadZip = async (
   },
 ) => {
   const id = params.userId;
- console.log(id);
   
   const form = await multiParser(request.originalRequest.request);
   const data = form.files["key"].content;
@@ -103,21 +115,15 @@ export const uploadZip = async (
     
   const output = await process.output() // "piped" must be set
   const outStr = new TextDecoder().decode(output);
-
-
-  //console.log(outStr)
-  
+   
+  console.log(outStr)
   process.close();
 
-  const decoder = new TextDecoder("utf-8");
-  const tmp = await Deno.readFile("./src/uploads/"+_id+"/latex.tex");
-  const content = decoder.decode(tmp);
 
 
-  const doc= await docs.updateOne({_id: new ObjectId(_id)},{  $set: { title:form.files["key"].filename, content}});
+  //const doc= await docs.updateOne({_id: new ObjectId(_id)},{  $set: { title:form.files["key"].filename, content}});
  console.log(id);
   response.status = 200;
-  response.body={document: doc}
 
 };
 

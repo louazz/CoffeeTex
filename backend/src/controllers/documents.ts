@@ -62,7 +62,7 @@ export const updateById= async ({params , request, response}:{params : {docId: s
         response.body= {message: "no document found with this id"}
     }
 
-    //await Deno.writeTextFile("./src/uploads/"+id+"/latex.tex", content);
+    await Deno.writeTextFile("./src/uploads/"+id+"/latex.tex", content);
     response.status=200;
     response.body={document: doc}
 }
