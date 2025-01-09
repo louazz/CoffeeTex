@@ -127,6 +127,48 @@ export const uploadZip = async (
 
 };
 
+export const listFiles = async (
+  { request, response, params }: {
+    request: any;
+    response: any;
+    params: { docId: string }
+  }
+  
+)=>{
+  const id = params.docId;
+  const p= Deno.run({ cmd: ["ls", "-l", "./src/uploads/"+id],  stdout: "piped",
+  stderr: "piped"});
+  const output = await p.output();
+  const files = new TextDecoder().decode(output);
+  p.close()
+  const fileNames = files.split(/\r?\n/)
+  console.log(fileNames)
+  fileNames.pop()
+
+  response.status=200;
+  response.body={files: fileNames}
+}
+
+export const deleteFile = async (  { request, response, params }: {
+  request: any;
+  response: any;
+  params: { docId: string }
+}
+
+)=>{
+  const {name}= await request.body.json();
+
+const id = params.docId;
+const p= Deno.run({ cmd: ["rm", "./src/uploads/"+id+"/"+name],  stdout: "piped",
+stderr: "piped"});
+const output = await p.output();
+const files = new TextDecoder().decode(output);
+p.close()
+response.status=200;
+}
+
+)
+
 export const getFiles = async (
   { request, response, params }: {
     request: any;

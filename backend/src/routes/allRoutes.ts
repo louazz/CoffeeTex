@@ -1,7 +1,7 @@
 import { Router } from "https://deno.land/x/oak/mod.ts";
 import { signin, signup } from "../controllers/users.ts";
 import { create, deleteById, findById, getByUserId, updateById } from "../controllers/documents.ts";
-import { Docx, compileFile, fileUpload, ToText,uploadZip, getLog, getFiles, saveFiles, uploadDocx, addFile } from "../controllers/compile.ts";
+import { Docx, compileFile, fileUpload, ToText,uploadZip, getLog, getFiles, saveFiles, uploadDocx, addFile, deleteFile, listFiles } from "../controllers/compile.ts";
 import { isAuthorized } from "../middleware/isAuthorized.ts";
 
 const router = new Router();
@@ -24,5 +24,7 @@ router.post("/api/document/docx/:userId", uploadDocx)
 router.get("/api/document/latexdocx/:docId", Docx)
 router.post("/api/document/zip/:userId", uploadZip)
 router.post("/api/document/addfile/:docId", addFile)
+router.post("/api/document/deletefile/:docId", deleteFile)
+router.post("/api/document/listfiles/:docId", listFiles)
 
 export default router;
