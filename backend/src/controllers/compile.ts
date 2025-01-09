@@ -191,7 +191,7 @@ export const getLog = async (
 )=>{
   const id = params.docId;
   const decoder = new TextDecoder("utf-8");
-const data = await Deno.readFile('./src/uploads/'+id+"/latex.log");
+const data = await Deno.readFile('./src/uploads/'+id+"/log.log");
 if (data){
   console.log(decoder.decode(data));
   const log = decoder.decode(data);
