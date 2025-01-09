@@ -25,6 +25,6 @@ router.get("/api/document/latexdocx/:docId", Docx)
 router.post("/api/document/zip/:userId", uploadZip)
 router.post("/api/document/addfile/:docId", addFile)
 router.post("/api/document/deletefile/:docId", deleteFile)
-router.post("/api/document/listfiles/:docId", listFiles)
+router.get("/api/document/listfiles/:docId", listFiles)
 
 export default router;
