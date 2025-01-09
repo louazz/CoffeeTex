@@ -136,7 +136,7 @@ export const listFiles = async (
   
 )=>{
   const id = params.docId;
-  const p= Deno.run({ cmd: ["sh", "lsfull.sh"],  stdout: "piped",
+  const p= Deno.run({ cmd: ["sh", "lsfull.sh", "./src/uploads/"+id],  stdout: "piped",
   stderr: "piped"});
   const output = await p.output();
   const files = new TextDecoder().decode(output);
