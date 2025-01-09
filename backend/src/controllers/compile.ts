@@ -167,7 +167,6 @@ p.close()
 response.status=200;
 }
 
-)
 
 export const getFiles = async (
   { request, response, params }: {
