@@ -136,7 +136,7 @@ export const listFiles = async (
   
 )=>{
   const id = params.docId;
-  const p= Deno.run({ cmd: ["sh", "lsfull.sh", "./src/uploads/"+id],  stdout: "piped",
+  const p= Deno.run({ cmd: ["sh", "tree.sh", "./src/uploads/"+id],  stdout: "piped",
   stderr: "piped"});
   const output = await p.output();
   const files = new TextDecoder().decode(output);
@@ -144,10 +144,26 @@ export const listFiles = async (
   var fileNames = files.split(/\r?\n/)
   console.log(fileNames)
   fileNames.pop()
-  fileNames = fileNames.slice(1)
-
+  fileNames.pop()
+  fileNames.pop()
+  //fileNames = fileNames.slice(1)
+  console.log(fileNames)
+  var res = [{}]
+  for (var i in fileNames){
+    var dateNames = fileNames[i].split("  ");
+    console.log(dateNames)
+    var file = dateNames[1].split("./src/uploads/"+id+"/")[1];
+     dateNames[1]= file
+    //var tmp = dateNames[0]+" "+ dateNames[1]
+    res.push({
+      "filename": dateNames[1],
+      "date": dateNames[0]
+    })
+  }
+ 
+  res = res.slice(1);
   response.status=200;
-  response.body={files: fileNames}
+  response.body={files: res}
 }
 
 export const deleteFile = async (  { request, response, params }: {
