@@ -1,0 +1,23 @@
+* {
+ 
+    box-sizing: border-box;
+  }
+  
+  ::before,
+  ::after {
+    box-sizing: inherit;
+  }
+
+  .wrap {
+    width: 105%;
+    margin: auto;
+    height: 85vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1;
+    overflow: auto;
+  }

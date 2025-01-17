@@ -30,7 +30,7 @@ function Nav() {
         <div className="row">
             <div className="column">
         
-                <h4><FiCoffee /> CoffeeTex</h4>
+                <h4><FiCoffee /> <strong>CoffeeTek</strong></h4>
             </div>
             <div className="column">
                 <div className="box">
@@ -40,9 +40,7 @@ function Nav() {
                     <div className="one">
                         <a onClick={()=>{navigate('/search')}}>Browse</a>
                     </div>
-                    <div className="one">
-                        <a onClick={()=>{navigate('/support')}}>Support up</a>
-                    </div>
+                
                 </div>
             </div>
 

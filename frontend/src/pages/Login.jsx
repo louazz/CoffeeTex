@@ -3,7 +3,7 @@ import { LoremIpsum } from "lorem-ipsum";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import Image from "../assets/login_im.png"
+import Image from "../assets/output.gif"
 import { FiCoffee } from "react-icons/fi";
 import Coffee from '../components/Coffee';
 
@@ -11,7 +11,7 @@ function Login() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
-    const api = "http://167.99.197.228:8000";
+    const api = "https://backend.coffeetex.co";
     const submit = () => {
         axios.post(api + "/api/signin", {
             username: username,
@@ -60,31 +60,36 @@ function Login() {
         },
 
     )
+    const display = () => {
+     
+            window.open(Image)
+      
+    }
     return(
-       
+        <>
                 <div className="container">
                     <Nav />
                     
-                    <Coffee/>
+                  
                     <br/>
                     <br/>
-                    <div >
                         <center>
-                          <h1>Welcome to CoffeeTex <FiCoffee /> </h1>
+                          <h1>Welcome to CoffeeTek <FiCoffee /> </h1>
                           <h6>You can start writing in LaTex and generating PDF documents, Word, and Markdown files</h6>
+                          <center>   <button className='button button-black tuto' onClick={display}>Tutorial</button></center>
                         </center>
-                    </div>
                     <br/>
                     <div className='c'>
                       <img className='img1'  src={Image}/>
                     </div>
+                 
                     <br/>
-                    <div className="second-color">
+                    <div className=" container second-color">
                         <br/>
                <h4>Enter your user credentials</h4>
                <p> This application allows the user to create, edit, and export LaTex documents.</p>
     
-               <div className='row'>
+               <div className='row' id='form'>
                 <div className='column'>
                 <label>Enter your username</label>
                 <input  placeholder="Username" onChange={handleUsername}/>
@@ -101,7 +106,7 @@ function Login() {
                <br/>
                <div className='row'>
                 <div className='column'>
-                <p>This web application is made by<br/> Louai Zaiter in 2024<br/> All right are reserved <br/> Instagram: @CoffeeTex <FiCoffee/></p>
+                <p>This web application is made by<br/> Louai Zaiter in 2024<br/> All rights reserved <br/>@CoffeeTek <FiCoffee/></p>
 
                 </div>
                 <div className='column'>
@@ -112,7 +117,9 @@ function Login() {
                  Penglais Road,<br/> Aberystwyth,<br/> United Kingdom,<br/> SY23 3LH</p>
                 </div>
                </div>
-                </div>
+               <Coffee/>
+               </div>
+               </> 
     
        
     )

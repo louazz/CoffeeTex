@@ -1,19 +1,16 @@
 
   
   .Example input,
-  .Example button {
-    font: inherit;
-  }
+
   
   .Example header {
     background-color: #323639;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
     padding: 20px;
-    color: white;
+    color: #002f6c;
   }
   
   .Example header h1 {
-    font-size: inherit;
     margin: 0;
   }
   
@@ -27,7 +24,7 @@
   
   .Example__container__load {
     margin-top: 1em;
-    color: white;
+    color: #002f6c;
   }
   
   .Example__container__document {
@@ -49,5 +46,5 @@
   
   .Example__container__document .react-pdf__message {
     padding: 20px;
-    color: white;
+    color: #002f6c;
   }

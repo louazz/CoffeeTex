@@ -8,6 +8,7 @@ import Coffee from '../components/Coffee';
 function Browse() {
     const [data, setData] = useState([
     ])
+    const [isUploading, setUploading]= useState(false);
     const [res, setRes] = useState(data)
     const [search, setSearch] = useState("")
     const navigate = useNavigate()
@@ -15,7 +16,7 @@ function Browse() {
     const [txt, setText] = useState("")
     const [file, setFile] = useState([]);
     const [event, setEvent] = useState()
-    const api = "http://167.99.197.228:8000";
+    const api = "https://backend.coffeetex.co";
     useEffect(() => {
         if (localStorage.getItem("token") == undefined || localStorage.getItem("token") == null) {
             navigate("/login")
@@ -122,7 +123,7 @@ function Browse() {
                 content: `\n\\documentclass[11pt]{article}
                \n\\title{ Title}
                 \n\\author{ Author }
-                \n\\date{\today}
+                \n\\date{today}
                 \n\\begin{document}
                 \n\\maketitle	
                 \n\\section{Section 1}
@@ -136,12 +137,13 @@ function Browse() {
         }
     }
     const handleUpload = async (e) => {
-
         const id = localStorage.getItem("userId");
         console.log(e.target.files)
          
          const formData = new FormData();
          formData.append('key', e.target.files[0]);
+    
+         setUploading(true)
          await axios
              .post(
                  api + "/api/document/zip/"+ localStorage.getItem("userId"),
@@ -180,19 +182,67 @@ function Browse() {
              .catch(function () {
                  alert("check your file")
              })
+             setUploading(false)
      }
-
+     const Docx = async (e) => {
+        const id = localStorage.getItem("userId");
+        console.log(e.target.files)
+         
+         const formData = new FormData();
+         formData.append('key', e.target.files[0]);
+    
+         setUploading(true)
+         await axios
+             .post(
+                 api + "/api/document/docx/"+ localStorage.getItem("userId"),
+                 formData,
+                 {
+                     responseType: "arraybuffer",
+                     headers: {
+                         "Content-Type": "multipart/form-data",
+                     },
+                 }
+             )
+             .then((response) => {
+                 if (response.status == 200 || response.status == 201) {
+                    console.log(response.data["document"])
+                     alert("file uploaded")
+                     axios.get(api + "/api/document/user/"+localStorage.getItem("userId"), {
+                        headers: {
+                            'Authorization': `Token ${localStorage.getItem("token")}`
+                        }
+                    }).then(
+                        response => {
+                            if (response.status == 200 || response.status == 201) {
+                                console.log(response.data.documents)
+                                setRes(response.data.documents)
+                                setData(response.data.documents)
+                                setChecker(true)
+                            } else {
+                                localStorage.clear()
+                                alert("Please make sure that the file is valid")
+                            }
+                        }
+                    )
+                 }
+    
+             })
+             .catch(function () {
+                 alert("check your file")
+             })
+             setUploading(false)
+     }
     return (<>
     <div className="container">
                     <Nav />
                 
-                    <Coffee/>
                     <br/>
                     <br/>
+                    {isUploading == true? <div className="container second-color">Please wait, we are uploading your ZIP file ...</div> : <></>}
                     <div >
                         <center>
-                          <h1>Welcome to CoffeeTex <FiCoffee /> </h1>
-                          <h6>You can start writing in LaTex and generating PDF documents, Word, and Markdown files</h6>
+                          <h1>Welcome to CoffeeTek <FiCoffee /> </h1>
+                          <h6>You can start writing in LaTex and generating PDF documents and MS Word files</h6>
                         </center>
                     </div>
                     <br/>        
@@ -201,18 +251,21 @@ function Browse() {
             <br />
             <div className="container second-color">
             <h2>LaTex Documents</h2>
-            <p>If you are trying to upload a zip file, please make sure that the file name does not contain any space and that the primary LaTex file is called <strong>main.texs</strong></p>
+            <p>If you are trying to upload a zip file, please make sure that the file name does not contain any space and that the primary LaTex file is called <strong>main.tex</strong></p>
             <center>
-                <div className="row"><div className="column column-60">
+                <div className="row">
+                    <div className="column column-50">
                     <input className="float-right" placeholder="Search for document..." onChange={handleChange} />
                 </div>
                 <div className="column">                    
                 <div className="box">
 
-                    <div className ="one">
-                
-
+                <div className="one">
+                        <label for="f" class="button button-black float-right file-label">Upload DOCX</label>
                     </div>
+                    <div className="one">
+                        <input className="hide" id="f" type="file"  onChange={Docx} />
+                        </div>
                     <div className="one">
                         <label for="files" class="button button-black float-right file-label">Upload ZIP</label>
                     </div>
@@ -232,63 +285,64 @@ function Browse() {
                 </div>
 
                 <br />
-                <table>
-                    <thead><tr>
-                        <th>
-                            doc_id
-                        </th>
-                        <th>
-                            title
-                        </th>
-                      
-                        <th>
-                            edit
-                        </th>
-                        <th>
-                            delete
-                        </th>
-                    </tr></thead>
-                    <tbody>
-                        {res.length == 0? <tr> <h4>No document created ...</h4></tr>:res.map(item => (
-                            <tr>
-                                <td>
-                                    {item._id}
-                                </td>
-                                <td>
-                                    {item.title}
-                                </td>
-                               
-                                <td>
-                                    <a onClick={() => handleEdit(item._id)}>Click</a>
-                                </td>
-                                <td>
-                                    <a onClick={() => handleDelete(item._id)}>Click</a>
-                                </td>
-                            </tr>
+             <div className="cards">
+                        {res.length == 0? <h4>No document created ...</h4>:res.map(item => (
+                            <article class="card">
+                                 <header>
+                                 <h5> {item._id}</h5>
+                                
+                                 </header>
+
+                                 <div class="content">
+                                 <h6> {item.title}</h6>
+                                 <br/>
+                                 </div>
+                                 <footer>
+                                    <div className="box">
+                                        <div className="one">
+                                        <button  className="button  button-dark" onClick={() => handleEdit(item._id)}>Edit</button>
+
+                                        </div>
+                                        <div className="one">
+                                        <button  className="button  button-dark" onClick={() => handleDelete(item._id)}>Delete</button>
+
+                                        </div>
+                                    </div>
+                                    </footer>
+    </article>
+                       
                         ))}
-
-
-                    </tbody>
-                </table>
-            </center>
+</div>
+</center>
         <br/>
+        </div>
         <br/>
-        <br/>
+        <div className="container second-color">
         <br/>
         <div className='row'>
                 <div className='column'>
-                <p>This web application is made by<br/> Louai Zaiter in 2024<br/> All right are reserved <br/> Instagram: @CoffeeTex <FiCoffee/></p>
-
+                    <div className="container first-color">
+                <p>This web application is made by<br/> Louai Zaiter in 2024<br/> All rights reserved <br/>@CoffeeTek <FiCoffee/></p>
+                </div>
                 </div>
                 <div className='column'>
+                <div className="container first-color">
                     <p>This application is suitable for desktop computers and laptops. </p>
-                </div>
+                </div></div>
                 <div className='column'>
+                <div className="container first-color">
                  <p>Address:<br/>
                  Penglais Road,<br/> Aberystwyth,<br/> United Kingdom,<br/> SY23 3LH</p>
-                </div>
+                </div></div>
                </div>
-        </div></>
+               <br/>
+               <div className="container first-color">
+               <br/>
+               <Coffee/>
+               </div>
+               <br/>
+               </div>
+       </>
     )
 }
 export default Browse;

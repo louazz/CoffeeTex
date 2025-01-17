@@ -3,7 +3,7 @@ import Nav from '../components/Nav'
 import { LoremIpsum } from "lorem-ipsum";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Image from "../assets/login_im.png";
+import Image from "../assets/output.gif"
 import { useNavigate } from "react-router";
 import { FiCoffee } from "react-icons/fi";
 import Coffee from '../components/Coffee';
@@ -11,7 +11,7 @@ function SignUp() {
     const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const api = "http://167.99.197.228:8000";
+  const api = "https://backend.coffeetex.co";
   const navigate = useNavigate();
   function submit() {
       console.log(username)
@@ -59,20 +59,27 @@ function SignUp() {
         }
     },
 
-)
+);
+ const display = () => {
+     
+  window.open(Image)
+
+}
     
     return(
-       
+       <>
                 <div className="container">
                     <Nav />
                 
-                    <Coffee/>
+               
                     <br/>
                     <br/>
                     <div >
                         <center>
-                        <h1>Welcome to CoffeeTex <FiCoffee /> </h1>
+                        <h1>Welcome to CoffeeTek <FiCoffee /> </h1>
                         <h6>You can start writing in LaTex and generating PDF documents, Word, and Markdown files</h6>
+                        <center>   <button className='button button-black tuto' onClick={display}>Tutorial</button></center>
+
                         </center>
                     </div>
                     <br/>
@@ -83,10 +90,12 @@ function SignUp() {
 
                     <div >
                         <br/>
-                <div>
-
                
-               <h6>Enter your user credentials and save it in a safe place</h6>
+               <div className='container second-color'>
+                <br/>
+               
+               <h4>Enter your user credentials</h4>
+               <p>Please make sure to save your credentials in a safe place</p>
               <div className='row'>
                 <div className='column'>
                 <label>Enter your username</label>
@@ -104,9 +113,11 @@ function SignUp() {
                <br/>
                </div>
                </div>
+               <br/>
+              
                <div className='row'>
                 <div className='column'>
-                <p>This web application is made by<br/> Louai Zaiter in 2024<br/> All right are reserved <br/> Instagram: @CoffeeTex <FiCoffee/></p>
+                <p>This web application is made by<br/> Louai Zaiter in 2024<br/> All rights reserved <br/> @CoffeeTek <FiCoffee/></p>
 
                 </div>
                 <div className='column'>
@@ -117,8 +128,10 @@ function SignUp() {
                  Penglais Road,<br/> Aberystwyth,<br/> United Kingdom,<br/> SY23 3LH</p>
                 </div>
                </div>
-                </div>
-    
+               <Coffee/>
+               </div>
+
+                </>
        
     )
 }

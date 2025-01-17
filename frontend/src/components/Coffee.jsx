@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from "react-router";
 
 const Button = styled.a`
   line-height: 2;
@@ -17,8 +18,8 @@ const Button = styled.a`
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  background-color: #b8e3e9;
-  color: #ff5c00;
+  background-color: #ffffc5;
+  color: #002f6c;
   &:hover, &:active, &:focus {
     text-decoration: none;
     box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5);
@@ -36,18 +37,21 @@ const Image = styled.img`
   vertical-align: middle;
 `;
 
-const Text = styled.span`
-  margin-left: 15px;
-  font-size: 2rem;
-  vertical-align: middle;
-`;
 
 function Coffee() {
+  const navigate = useNavigate()
+
   return (
-    <Button target="_blank" href="https://buymeacoffee.com/coffeetex">
-      <Image src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee" />
-      <Text>Show you support and buy me a coffee</Text>
-    </Button>
+    <>
+    <div className='box'>
+    <div className='one'>
+  <a  target="_blank"  href="https://buymeacoffee.com/coffeetex"><Image  src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" className='float-right'/></a>  
+    </div>
+    <div className='one'>
+    <p className='float-left'>Show your support and buy me a coffee</p>
+    </div>
+    </div>
+          </>
   );
 }
 

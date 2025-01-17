@@ -4,7 +4,7 @@ import { pdfjs, Document, Page } from 'react-pdf';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 
 import './Sample.css';
-
+import '../assets/editor.css'
 import type { PDFDocumentProxy } from 'pdfjs-dist';
 
 const options = {
@@ -57,7 +57,7 @@ function Sample({file}) {
     if (checker == false){
       setScale(scale - 0.1)
     }else{
-     if (scale < 1.4){
+     if (scale < 1.1){
       setScale(scale + 0.1)
      }
  
@@ -66,27 +66,37 @@ function Sample({file}) {
   
 
   return (
-    <div className="Example">
+    <div className="Example ">
       <div className="Example__container">
         <div className="Example__container__document" ref={setContainerRef}>
+          <div className='wrap'>
+          <div className='container second-color'>
+            <br/>
          <div className='box'>
+         
           <div className='one'>
-           Page {page} of {numPages}
+            <button className='button button-dark float-left' onClick={()=>{Zoom(true)}}>Zoom in</button>
           </div>
           <div className='one'>
-            <button className='button button-dark' onClick={()=>{Zoom(true)}}>Zoom in</button>
+            <button className='button button-light  float-left' onClick={()=>{Zoom(false)}}>Zoom out</button>
           </div>
           <div className='one'>
-            <button className='button button-dark ' onClick={()=>{Zoom(false)}}>Zoom out</button>
+            <div className='container first-color'>
+              <center>
+           <p>Page <strong>{page}</strong> of <strong>{numPages}</strong></p>
+           </center>
+           </div>
           </div>
           <div className='one'>
             <button className='button button-dark float-right' onClick={Back}>Back</button>
           </div>
           <div className='one'>
-            <button className='button button-dark float-right' onClick={Next}>Next</button>
+            <button className='button button-light float-right' onClick={Next}>Next</button>
           </div>
          </div>
-
+         
+         </div>
+         <main>
           <Document file= {file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
       
               <Page
@@ -97,6 +107,8 @@ function Sample({file}) {
               />
           
           </Document>
+          </main>
+        </div>
         </div>
       </div>
     </div>
