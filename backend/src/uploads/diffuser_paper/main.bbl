@@ -1,0 +1,81 @@
+\begin{thebibliography}{10}
+
+\bibitem{arora2016understanding}
+R.~Arora, A.~Basu, P.~Mianjy, and A.~Mukherjee.
+\newblock Understanding deep neural networks with rectified linear units.
+\newblock {\em arXiv preprint arXiv:1611.01491}, 2016.
+
+\bibitem{butte2022sharp}
+S.~Butte, H.~Wang, M.~Xian, and A.~Vakanski.
+\newblock Sharp-gan: Sharpness loss regularized gan for histopathology image
+  synthesis.
+\newblock In {\em 2022 IEEE 19th International Symposium on Biomedical Imaging
+  (ISBI)}, pages 1--5. IEEE, 2022.
+
+\bibitem{graham2014fractional}
+B.~Graham.
+\newblock Fractional max-pooling.
+\newblock {\em arXiv preprint arXiv:1412.6071}, 2014.
+
+\bibitem{Kim_2024_WACV}
+J.~Kim and H.~Park.
+\newblock Adaptive latent diffusion model for 3d medical image to image
+  translation: Multi-modal magnetic resonance imaging study.
+\newblock In {\em Proceedings of the IEEE/CVF Winter Conference on Applications
+  of Computer Vision (WACV)}, pages 7604--7613, January 2024.
+
+\bibitem{levine2020synthesis}
+A.~B. Levine, J.~Peng, D.~Farnell, M.~Nursey, Y.~Wang, J.~R. Naso, H.~Ren,
+  H.~Farahani, C.~Chen, D.~Chiu, et~al.
+\newblock Synthesis of diagnostic quality cancer pathology images by generative
+  adversarial networks.
+\newblock {\em The Journal of pathology}, 252(2):178--188, 2020.
+
+\bibitem{o2015introduction}
+K.~O'shea and R.~Nash.
+\newblock An introduction to convolutional neural networks.
+\newblock {\em arXiv preprint arXiv:1511.08458}, 2015.
+
+\bibitem{pinheiro2021variational}
+L.~Pinheiro~Cinelli, M.~Ara{\'u}jo~Marins, E.~A. Barros~da Silva, and
+  S.~Lima~Netto.
+\newblock Variational autoencoder.
+\newblock In {\em Variational Methods for Machine Learning with Applications to
+  Deep Networks}, pages 111--149. Springer, 2021.
+
+\bibitem{BCDR}
+B.~C.~D. Repository.
+\newblock \url{http://bcdr.inegi.up.pt}.
+
+\bibitem{Rombach_2022_CVPR}
+R.~Rombach, A.~Blattmann, D.~Lorenz, P.~Esser, and B.~Ommer.
+\newblock High-resolution image synthesis with latent diffusion models.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition (CVPR)}, pages 10684--10695, June 2022.
+
+\bibitem{saharia2022palette}
+C.~Saharia, W.~Chan, H.~Chang, C.~Lee, J.~Ho, T.~Salimans, D.~Fleet, and
+  M.~Norouzi.
+\newblock Palette: Image-to-image diffusion models.
+\newblock In {\em ACM SIGGRAPH 2022 conference proceedings}, pages 1--10, 2022.
+
+\bibitem{spanhol2015dataset}
+F.~A. Spanhol, L.~S. Oliveira, C.~Petitjean, and L.~Heutte.
+\newblock A dataset for breast cancer histopathological image classification.
+\newblock {\em Ieee transactions on biomedical engineering}, 63(7):1455--1462,
+  2015.
+
+\bibitem{willmott2005advantages}
+C.~J. Willmott and K.~Matsuura.
+\newblock Advantages of the mean absolute error (mae) over the root mean square
+  error (rmse) in assessing average model performance.
+\newblock {\em Climate research}, 30(1):79--82, 2005.
+
+\bibitem{xue2021selective}
+Y.~Xue, J.~Ye, Q.~Zhou, L.~R. Long, S.~Antani, Z.~Xue, C.~Cornwell, R.~Zaino,
+  K.~C. Cheng, and X.~Huang.
+\newblock Selective synthetic augmentation with histogan for improved
+  histopathology image classification.
+\newblock {\em Medical image analysis}, 67:101816, 2021.
+
+\end{thebibliography}

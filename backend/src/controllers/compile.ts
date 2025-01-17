@@ -150,14 +150,13 @@ export const listFiles = async (
   console.log(fileNames)
   var res = [{}]
   for (var i in fileNames){
-    var dateNames = fileNames[i].split("  ");
-    console.log(dateNames)
-    var file = dateNames[1].split("./src/uploads/"+id+"/")[1];
-     dateNames[1]= file
+    //var dateNames = fileNames[i].split("  ");
+    //console.log(dateNames)
+    var file = fileNames[i].split("  ./src/uploads/"+id+"/");
     //var tmp = dateNames[0]+" "+ dateNames[1]
     res.push({
-      "filename": dateNames[1],
-      "date": dateNames[0]
+      "filename": file[1],
+      "date": file[0]
     })
   }
  
