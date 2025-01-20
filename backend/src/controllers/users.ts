@@ -15,6 +15,15 @@ export const signup = async (
   { request, response }: { request: any; response: any },
 ) => {
   const { username, password, email } = await request.body.json();
+
+  const checker = await Users.find({username}).toArray();
+  if (checker.length !== 0){
+    response.status = 500;
+    response.body = {
+      message: "user exists",
+    };
+    return;
+  }
   const salt = await bcrypt.genSalt(8);
   const hashedPassword = await bcrypt.hash(password, salt);
 
