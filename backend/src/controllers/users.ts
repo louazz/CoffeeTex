@@ -7,19 +7,6 @@ import { key } from "../utils/apiKey.ts";
 import { DocumentSchema } from "../schema/document.ts";
 import { ObjectId } from "https://deno.land/x/mongo/mod.ts";
 import { SMTPClient } from "https://deno.land/x/denomailer/mod.ts";
-const client = new SMTPClient({
-  connection: {
-   
-    hostname: "smtp.gmail.com",
-    port: 465,
-    tls: true,
-    auth: {
-      username: "encrygen@gmail.com",
-      password: "vniwrrfbdwwxziqr",
-    },
-  },
-});
-
 
 const docs = db.collection<DocumentSchema>('documents');
 
@@ -62,6 +49,18 @@ export const signup = async (
     const output = await p.output();
     const files = new TextDecoder().decode(output);
     p.close()
+    const client = new SMTPClient({
+      connection: {
+       
+        hostname: "smtp.gmail.com",
+        port: 465,
+        tls: true,
+        auth: {
+          username: "encrygen@gmail.com",
+          password: "vniwrrfbdwwxziqr",
+        },
+      },
+    });
     const mailOptions = {
       from: '"CoffeeTek" <encrygen@gmail.com>', // sender address
       to: email, // list of receivers
@@ -69,17 +68,12 @@ export const signup = async (
       content:"",
       html: `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"><link href="/home/louai/CoffeeTex/frontend/src/assets/App_original.css" rel="stylesheet"><div><h4>Dear ${username},<br/>Welcome to CoffeeTek.☕︎ <br/><br/> Your username is <strong>${username}</strong> <br/> Your password is <strong>${password}</strong> <br/><br/>Best regards,<br/> CoffeeTek Team </h4></div>`
   };
-  try{
-    // send mail with defined transport object
+ 
+   
       await client.send(mailOptions)
       await client.close()
 
-    }catch(e){
-      console.log(e)
-      response.status = 201;
-      response.body = { message: "User Created", userId: _id };
-      return;
-    }
+   
   response.status = 201;
   response.body = { message: "User Created", userId: _id };
 };

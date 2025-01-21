@@ -1,0 +1,110 @@
+\begin{thebibliography}{999}
+
+\bibitem[key()]{key}
+Cancer Research.
+\newblock
+  \url{https://www.cancerresearchuk.org/about-cancer/acute-lymphoblastic-leukaemia-all/about
+  }.
+
+\bibitem[Kohler(1981)]{kohler1981segmentation}
+Kohler, R.
+\newblock A segmentation system based on thresholding.
+\newblock {\em Computer Graphics and Image Processing} {\bf 1981}, {\em
+  15},~319--338.
+
+\bibitem[O'shea and Nash(2015)]{o2015introduction}
+O'shea, K.; Nash, R.
+\newblock An introduction to convolutional neural networks.
+\newblock {\em arXiv preprint arXiv:1511.08458} {\bf 2015}.
+
+\bibitem[Clevert et~al.(2015)Clevert, Unterthiner, and
+  Hochreiter]{clevert2015fast}
+Clevert, D.A.; Unterthiner, T.; Hochreiter, S.
+\newblock Fast and accurate deep network learning by exponential linear units
+  (elus).
+\newblock {\em arXiv preprint arXiv:1511.07289} {\bf 2015}.
+
+\bibitem[Khandekar et~al.(2021)Khandekar, Shastry, Jaishankar, Faust, and
+  Sampathila]{khandekar2021automated}
+Khandekar, R.; Shastry, P.; Jaishankar, S.; Faust, O.; Sampathila, N.
+\newblock Automated blast cell detection for Acute Lymphoblastic Leukemia
+  diagnosis.
+\newblock {\em Biomedical Signal Processing and Control} {\bf 2021}, {\em
+  68},~102690.
+
+\bibitem[Ahmed et~al.(2019)Ahmed, Yigit, Isik, and
+  Alpkocak]{ahmed2019identification}
+Ahmed, N.; Yigit, A.; Isik, Z.; Alpkocak, A.
+\newblock Identification of leukemia subtypes from microscopic images using
+  convolutional neural network.
+\newblock {\em Diagnostics} {\bf 2019}, {\em 9},~104.
+
+\bibitem[Peterson(2009)]{peterson2009k}
+Peterson, L.E.
+\newblock K-nearest neighbor.
+\newblock {\em Scholarpedia} {\bf 2009}, {\em 4},~1883.
+
+\bibitem[Hearst et~al.(1998)Hearst, Dumais, Osuna, Platt, and
+  Scholkopf]{hearst1998support}
+Hearst, M.A.; Dumais, S.T.; Osuna, E.; Platt, J.; Scholkopf, B.
+\newblock Support vector machines.
+\newblock {\em IEEE Intelligent Systems and their applications} {\bf 1998},
+  {\em 13},~18--28.
+
+\bibitem[Arif et~al.(2022)Arif, Akbar, Farooq, Hassan, and
+  Gull]{arif2022automatic}
+Arif, R.; Akbar, S.; Farooq, A.B.; Hassan, S.A.; Gull, S.
+\newblock Automatic Detection of Leukemia through Convolutional Neural Network.
+\newblock In Proceedings of the 2022 International Conference on Frontiers of
+  Information Technology (FIT). IEEE,  2022, pp. 195--200.
+
+\bibitem[Krizhevsky et~al.(2012)Krizhevsky, Sutskever, and
+  Hinton]{krizhevsky2012imagenet}
+Krizhevsky, A.; Sutskever, I.; Hinton, G.E.
+\newblock Imagenet classification with deep convolutional neural networks.
+\newblock {\em Advances in neural information processing systems} {\bf 2012},
+  {\em 25}.
+
+\bibitem[Sulaiman et~al.(2023)Sulaiman, Kaur, Gupta, Alshahrani, Reshan,
+  Alyami, and Shaikh]{sulaiman2023resrandsvm}
+Sulaiman, A.; Kaur, S.; Gupta, S.; Alshahrani, H.; Reshan, M.S.A.; Alyami, S.;
+  Shaikh, A.
+\newblock ResRandSVM: Hybrid approach for acute lymphocytic leukemia
+  classification in blood smear images.
+\newblock {\em Diagnostics} {\bf 2023}, {\em 13},~2121.
+
+\bibitem[Mohammed et~al.(2013)Mohammed, Mohamed, Naugler, and
+  Far]{mohammed2013chronic}
+Mohammed, E.A.; Mohamed, M.M.; Naugler, C.; Far, B.H.
+\newblock Chronic lymphocytic leukemia cell segmentation from microscopic blood
+  images using watershed algorithm and optimal thresholding.
+\newblock In Proceedings of the 2013 26th IEEE Canadian Conference on
+  Electrical and Computer Engineering (CCECE). IEEE,  2013, pp. 1--5.
+
+\bibitem[Lu et~al.(2021)Lu, Qin, Fan, Lai, and Li]{lu2021wbc}
+Lu, Y.; Qin, X.; Fan, H.; Lai, T.; Li, Z.
+\newblock WBC-Net: A white blood cell segmentation network based on UNet++ and
+  ResNet.
+\newblock {\em Applied Soft Computing} {\bf 2021}, {\em 101},~107006.
+
+\bibitem[Labati et~al.(2011)Labati, Piuri, and Scotti]{labati2011all}
+Labati, R.D.; Piuri, V.; Scotti, F.
+\newblock All-IDB: The acute lymphoblastic leukemia image database for image
+  processing.
+\newblock In Proceedings of the 2011 18th IEEE international conference on
+  image processing. IEEE,  2011, pp. 2045--2048.
+
+\bibitem[He et~al.(2016)He, Zhang, Ren, and Sun]{he2016deep}
+He, K.; Zhang, X.; Ren, S.; Sun, J.
+\newblock Deep residual learning for image recognition.
+\newblock In Proceedings of the Proceedings of the IEEE conference on computer
+  vision and pattern recognition,  2016, pp. 770--778.
+
+\bibitem[Radosavovic et~al.(2020)Radosavovic, Kosaraju, Girshick, He, and
+  Doll{\'a}r]{radosavovic2020designing}
+Radosavovic, I.; Kosaraju, R.P.; Girshick, R.; He, K.; Doll{\'a}r, P.
+\newblock Designing network design spaces.
+\newblock In Proceedings of the Proceedings of the IEEE/CVF conference on
+  computer vision and pattern recognition,  2020, pp. 10428--10436.
+
+\end{thebibliography}
