@@ -67,7 +67,7 @@ export const signup = async (
       to: email, // list of receivers
       subject: 'Welcome to CoffeeTek ☕ '+username, // Subject line
       content:"",
-      html: `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"><link href="/home/louai/CoffeeTex/frontend/src/assets/App_original.css" rel="stylesheet"><div><h4>Dear Louai,<br/>Welcome to CoffeeTek.☕︎ <br/><br/> Your username is <strong>${username}</strong> <br/> Your password is <strong>${password}</strong> <br/><br/>Best regards,<br/> CoffeeTek Team </h4></div>`
+      html: `<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"><link href="/home/louai/CoffeeTex/frontend/src/assets/App_original.css" rel="stylesheet"><div><h4>Dear ${username},<br/>Welcome to CoffeeTek.☕︎ <br/><br/> Your username is <strong>${username}</strong> <br/> Your password is <strong>${password}</strong> <br/><br/>Best regards,<br/> CoffeeTek Team </h4></div>`
   };
   try{
     // send mail with defined transport object
