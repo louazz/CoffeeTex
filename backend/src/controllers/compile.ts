@@ -119,7 +119,22 @@ export const uploadZip = async (
   console.log(outStr)
   process.close();
 
+  const process_2 = Deno.run({
+    cmd: ["sh","find.sh", './src/uploads/' + _id],
+    stdout: "piped",
+    stderr: "piped"
+  });
+    
+  const output_2 = await process_2.output() // "piped" must be set
+  const outStr_2 = new TextDecoder().decode(output_2);
+   
+  console.log(outStr_2)
+  process_2.close();
 
+  if(outStr_2 == "0\n"){
+    response.status = 404;
+    return;
+  }
 
   //const doc= await docs.updateOne({_id: new ObjectId(_id)},{  $set: { title:form.files["key"].filename, content}});
  console.log(id);
