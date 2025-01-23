@@ -1,0 +1,1 @@
+find $1 -type f -name "main.tex" | wc -l
