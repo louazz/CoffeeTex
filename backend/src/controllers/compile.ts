@@ -120,6 +120,9 @@ export const uploadZip = async (
   process_2.close();
 
   if(outStr_2 == "0\n"){
+    let doc =await docs.deleteOne({_id: new ObjectId(_id)});
+    const p=Deno.run({ cmd: ["rm", "-rf", "./src/uploads/"+_id]});
+
     response.status = 404;
     return;
   }
