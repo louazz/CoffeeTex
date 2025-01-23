@@ -107,20 +107,8 @@ export const uploadZip = async (
 //console.log(new TextDecoder().decode(stdout));
   await Deno.writeFile("./src/uploads/" + _id + "/"+form.files["key"].filename, data);
   
-  const process = Deno.run({
-    cmd: ["sh","zip.sh", './src/uploads/' + _id + "/"+form.files["key"].filename,'./src/uploads/' + _id],
-    stdout: "piped",
-    stderr: "piped"
-  });
-    
-  const output = await process.output() // "piped" must be set
-  const outStr = new TextDecoder().decode(output);
-   
-  console.log(outStr)
-  process.close();
-
   const process_2 = Deno.run({
-    cmd: ["sh","find.sh", './src/uploads/' + _id],
+    cmd: ["sh","find.sh", './src/uploads/' + _id + "/"+form.files["key"].filename,'./src/uploads/' + _id],
     stdout: "piped",
     stderr: "piped"
   });
@@ -135,6 +123,20 @@ export const uploadZip = async (
     response.status = 404;
     return;
   }
+
+
+  const process = Deno.run({
+    cmd: ["sh","zip.sh", './src/uploads/' + _id + "/"+form.files["key"].filename,'./src/uploads/' + _id],
+    stdout: "piped",
+    stderr: "piped"
+  });
+    
+  const output = await process.output() // "piped" must be set
+  const outStr = new TextDecoder().decode(output);
+   
+  console.log(outStr)
+  process.close();
+
 
   //const doc= await docs.updateOne({_id: new ObjectId(_id)},{  $set: { title:form.files["key"].filename, content}});
  console.log(id);
